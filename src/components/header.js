@@ -1,39 +1,28 @@
-import React from 'react';
-import {Link} from "react-router-dom";
-import './style.css';
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Header(){
-    return(
-        <div className="Header">
-            <div className="Logo">
-                beFriend
-            </div>
-            <div className="headerCenter">
-                <div className="menuItem">
-                    Home
-                </div>
-                <div className="menuItem">
-                    Community
-                </div>
-                <div className="menuItem">
-                    About Us
-                </div>
-                <div className="menuItem">
-                    Workshop
-                </div>
-            </div>
-            <div className="headerLeft">
-                <Link to="/Screens">
-                    <div className="signUp">
-                        Sign Up
-                    </div>
-                </Link>
-                <div className="login">
-                    Login
-                </div>
-            </div>
-        </div>
-    );
+function Header() {
+  return (
+    <div className="Header">
+      <h1 className="Logo">beFriend</h1>
+      <ul className="headerCenter">
+        <Link to="/">
+          <li className="menuItem">Home</li>
+        </Link>
+        <li className="menuItem">Community</li>
+        <li className="menuItem">About Us</li>
+        <li className="menuItem">Workshop</li>
+      </ul>
+      <div className="headerLeft">
+        <Link to="/SignUp">
+          <div className="signUp">Sign Up</div>
+        </Link>
+        <Link to="/Login">
+          <div className="login">Login</div>
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 export default Header;

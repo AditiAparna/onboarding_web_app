@@ -1,56 +1,58 @@
-.Container{
-    background-color:#e6edfe;
+.Container {
+    background-color: #e6edfe;
     margin-top: 120px;
     margin-left: 150px;
     margin-right: 150px;
     margin-bottom: 50px;
+    align-self: center;
+    width: 800px;
     height: 500px;
-}
-.heading{
+  }
+  .heading {
     display: flex;
     flex-direction: row;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
     border-bottom: 2px black solid;
-}
-.loginToggle, .signUpToggle{
+  }
+  .loginToggle,
+  .signUpToggle {
     cursor: pointer;
-}
-.toggleActive{
+  }
+  .toggleActive {
     color: grey;
     display: flex;
     cursor: default;
-}
-.buttons{
+  }
+  .buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 50px;
-}
-.Button{
+  }
+  .Button {
     height: 50px;
     width: 150px;
     color: #fff;
     background-color: #000;
     border-radius: 5px;
     cursor: pointer;
-}
-.loginDetails{
-    /* height: 300px; */
-    margin-left: 125px;
-}
-.row{
+  }
+  .row {
     display: flex;
     flex-direction: row;
-}
-.detailText{
+    padding-left: 187px;
+    padding-bottom: 10px;
+  }
+  .detailText {
     margin-top: 20px;
     font-size: 20px;
-}
-.inputBox{
+  }
+  .inputBox {
     padding: 10px;
     width: 400px;
-}
-.Construction{
+  }
+  .Construction {
     margin-top: 120px;
     margin-left: 150px;
     margin-right: 150px;
@@ -59,4 +61,5 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: 500px;
-}
+  }
+  

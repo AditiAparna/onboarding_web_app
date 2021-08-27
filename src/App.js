@@ -1,34 +1,61 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './App.css';
-import Header from './components/header';
-import Login from './Screens/login';
+import "./App.css";
+import Header from "./components/header";
+import Login from "./Screens/login";
 import UnderConstruction from "./Screens/underConstruction";
+import Home from "./components/Home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {firebase} from "firebase/app";
+import "firebase/auth";
+// import firebase from "firebase/app";
+// import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
-function App() {
+function setUpRecaptcha(){
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+    'size': 'invisible',
+    'callback': (response) => {
+      // reCAPTCHA solved, allow signInWithPhoneNumber.
+      onSignInSubmit();
+    }
+  });
+  
+}
+
+function onSignInSubmit(){
+
+    const phoneNumber = "+91 1234567897";
+    const appVerifier = window.recaptchaVerifier;
+
+    const auth = getAuth();
+    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+        .then((confirmationResult) => {
+          // SMS sent. Prompt user to type the code from the message, then sign the
+          // user in with confirmationResult.confirm(code).
+          window.confirmationResult = confirmationResult;
+          // ...
+        }).catch((error) => {
+          // Error; SMS not sent
+          // ...
+        });
+  }
+function App() {  
   return (
     <div className="App">
       <Router>
-      <Header />
-      <div className="Intro">
-        <div style={{width:650, height:400}}>
-          <div className="image" />
-        </div>
-        <div>
-          <h1 className="heading">Hey There! Having trouble making friends?</h1>
-          <p className="content">We are here to help you find your friends, no matter who you are, we will always welcome you. Come, let's be friends!!</p>
-          <div className="buttonContainer">
-            <button className="button">Join Us Now</button>
-          </div>
-        </div>
-      </div>
-      <div className="bottomImage" />
-      <Login />
-      <UnderConstruction />
-        {/* <Switch>
-          <Route path="/" exact component={() => <Home />} />
-          <Route exact path="/" component={App} />
-          <Route path="/Screens" exact component={Login} />
-        </Switch> */}
+        <Switch>
+          <Route
+            path="/"
+            exact
+            component={() => (
+              <div>
+                <Header />
+                <Home />
+              </div>
+            )}
+          />
+          <Route path="/Login" exact component={() => <Login login={1}/>} />
+          <Route path="/SignUp" exact component={() => <Login login={0} signIn={this.onSignInSubmit()}/>} />
+          <Route path="/soon" exact component={() => <UnderConstruction />} />
+        </Switch>
       </Router>
     </div>
   );
