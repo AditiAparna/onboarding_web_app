@@ -69,7 +69,7 @@ export default class App extends React.Component {
             </button>
           </div>
           <div>
-            <button className="Button" onClick={()=>{this.state.toggle?this.props.signIn:null}}>
+            <button className="Button">
               {this.state.toggle ? "Sign Up" : "Login"}
             </button>
           </div>
